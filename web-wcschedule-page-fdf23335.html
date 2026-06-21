@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯赛程 · 快速识别赛事日程</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background-color: #f1f5f9;
+        }
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HERO 深色头图 ---------- */
+        .hero {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 60%, #0d2137 100%);
+            padding: 80px 0 70px;
+            text-align: center;
+            color: #f0f4ff;
+            position: relative;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: #3b82f6;
+            opacity: 0.3;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 680px;
+            margin: 0 auto 30px;
+            color: #cbd5e1;
+        }
+        .hero .tagline {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.2);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+        }
+
+        /* ---------- 优势区 (卡片) ---------- */
+        .section {
+            padding: 56px 0 40px;
+        }
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 32px;
+            color: #0f172a;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: #3b82f6;
+            margin-top: 6px;
+            border-radius: 3px;
+        }
+        .advantages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px 22px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        /* ---------- 说明区 ---------- */
+        .info-block {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 36px 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            margin-top: 8px;
+        }
+        .info-block h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+        .info-block p {
+            margin-bottom: 14px;
+            color: #334155;
+            font-size: 1rem;
+        }
+        .info-block ul {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 16px;
+        }
+        .info-block li {
+            padding: 6px 0 6px 26px;
+            position: relative;
+            color: #1e293b;
+        }
+        .info-block li::before {
+            content: "›";
+            position: absolute;
+            left: 6px;
+            color: #3b82f6;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* ---------- FAQ 摘要 ---------- */
+        .faq-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 28px 0 12px;
+        }
+        .faq-item {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 22px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border-left: 4px solid #3b82f6;
+        }
+        .faq-item .q {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+        .faq-item .a {
+            color: #475569;
+            font-size: 0.92rem;
+        }
+
+        /* ---------- 底部链接 ---------- */
+        .footer-links {
+            border-top: 1px solid #e2e8f0;
+            padding: 28px 0 48px;
+            text-align: center;
+            background: #ffffff;
+        }
+        .footer-links p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+        }
+        .footer-links a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- 响应式细节 ---------- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .hero {
+                padding: 56px 0 50px;
+            }
+            .section {
+                padding: 36px 0 24px;
+            }
+            .info-block {
+                padding: 24px 20px;
+            }
+            .faq-summary {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .container {
+                padding: 0 16px;
+            }
+            .card {
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO 区 -->
+    <section class="hero">
+        <div class="container">
+            <span class="tagline">⚽ 赛事日程 · 一目了然</span>
+            <h1>看世界杯赛程，先明白这里有什么</h1>
+            <p>一个专注汇集世界杯比赛时间、对阵与阶段的页面，<br>帮你快速对焦你想了解的场次，不再翻来翻去。</p>
+        </div>
+    </section>
+
+    <!-- 优势区（卡片） -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">为什么值得留意这个页面</div>
+            <div class="advantages">
+                <div class="card">
+                    <h3>📅 时间线清晰</h3>
+                    <p>从小组赛到淘汰赛，每轮日程按日期排列，阶段切换一目了然。不需要在多个页面之间跳转。</p>
+                </div>
+                <div class="card">
+                    <h3>🏆 对阵集中展示</h3>
+                    <p>主客队、比赛场地、开球时间整合在统一视图里。省去自己拼凑信息的麻烦。</p>
+                </div>
+                <div class="card">
+                    <h3>📱 适配移动端</h3>
+                    <p>在手机上同样可以顺畅浏览赛程。专为快速查阅优化，不必放大缩小。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 说明区 + 场景 -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="info-block">
+                <h2>这个页面适合谁、解决什么问题</h2>
+                <p>当你打开一个赛程页面，最直接的需求通常是：<strong>下一场什么时候踢？某个队在哪一天出场？</strong> 这个网站围绕这几个核心问题组织内容，把赛程拆解成可快速浏览的结构。</p>
+                <p>它的特点在于不堆叠冗余信息，而是让每一条比赛记录都包含关键元素：<br>日期、对手、阶段、场地。如果你只想确认某一天的比赛安排，或者比对同一轮次的多场时间，这种结构会减少很多筛选动作。</p>
+                <p>另外，页面会跟随赛事进展更新阶段标签，确保你看到的不是过期分组。适合以下场景：</p>
+                <ul>
+                    <li>想快速确认自己关注的球队下一场日期</li>
+                    <li>计划看球但需要提前知道凌晨还是黄金时间</li>
+                    <li>赛事中期想回顾已进行的对阵结果</li>
+                </ul>
+                <p>如果你目前正在寻找可靠的世界杯赛程来源，直接看看 <a href="https://web-wcschedule.com" style="color:#2563eb; font-weight:500; text-decoration:none;">世界杯赛程</a> 这个页面是否贴合你的习惯。它的设计目标就是让你少划几次屏幕就能找到答案。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-title" style="font-size:1.4rem;">常见疑问速览</div>
+            <div class="faq-summary">
+                <div class="faq-item">
+                    <div class="q">❓ 多久更新一次赛程？</div>
+                    <div class="a">页面在赛事期间保持同步，阶段变化（如小组出线后）会及时调整。具体日期以官方赛历为准。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="q">❓ 包含全部比赛吗？</div>
+                    <div class="a">是的，覆盖从小组赛到决赛的所有场次。如果遇到赛程调整，页面会标注更新状态。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="q">❓ 有没有历史赛果？</div>
+                    <div class="a">当前主要聚焦于未来赛程和进行中的比赛。历史场次会保留阶段标签，但不提供详细数据。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部链接 -->
+    <footer class="footer-links">
+        <div class="container">
+            <p>想直接浏览完整赛程？ →  <a href="https://web-wcschedule.com">世界杯赛程</a></p>
+            <p style="margin-top: 12px; font-size:0.85rem; color:#94a3b8;">一个轻量、聚焦赛程日期的页面 · 更新时间以比赛实际进展为准</p>
+        </div>
+    </footer>
+
+</body>
+</html>
