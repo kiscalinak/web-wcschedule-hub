@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>壹号娱乐 · 轻松开启你的线上时光</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            background: linear-gradient(145deg, #f9e9d2 0%, #fdd9b5 45%, #fbc4ab 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #2e241e;
+        }
+        .page-wrap {
+            max-width: 880px;
+            width: 100%;
+        }
+        /* 暖色卡片堆叠 */
+        .card {
+            background: rgba(255, 249, 241, 0.85);
+            backdrop-filter: blur(1px);
+            border-radius: 32px;
+            padding: 2.2rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 12px 30px rgba(170, 90, 40, 0.12), 0 4px 8px rgba(0,0,0,0.02);
+            transition: box-shadow 0.2s ease;
+        }
+        .card:hover {
+            box-shadow: 0 16px 36px rgba(170, 90, 40, 0.18);
+        }
+        /* hero 区特别处理 */
+        .hero {
+            background: rgba(255, 245, 235, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 40px;
+            padding: 3rem 2.2rem 2.6rem;
+            margin-bottom: 2.2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 180, 0.5);
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #5c2e1a;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+        .hero .sub {
+            font-size: 1.2rem;
+            color: #7a4d33;
+            max-width: 580px;
+            margin: 0.4rem auto 1.2rem;
+            font-weight: 400;
+        }
+        .hero .tagline {
+            display: inline-block;
+            background: #edc7ab;
+            color: #3f2215;
+            padding: 0.4rem 1.4rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            margin-top: 0.6rem;
+            box-shadow: inset 0 1px 3px rgba(255,255,240,0.7);
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #4b2b1b;
+            margin-bottom: 0.6rem;
+            border-left: 5px solid #dbaa80;
+            padding-left: 1rem;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+        }
+        .feature-item {
+            background: #fffbf5;
+            padding: 1.2rem 1.4rem;
+            border-radius: 24px;
+            box-shadow: 0 2px 6px rgba(150, 80, 30, 0.06);
+        }
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #5f3420;
+            margin-bottom: 0.3rem;
+        }
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #4d382b;
+        }
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e4d1c0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 600;
+            color: #452c1e;
+            margin-bottom: 0.2rem;
+        }
+        .faq-a {
+            color: #584137;
+            font-size: 0.95rem;
+        }
+        .link-block {
+            text-align: center;
+            background: rgba(255, 240, 228, 0.7);
+            border-radius: 60px;
+            padding: 1.2rem 1.5rem;
+            margin-top: 0.8rem;
+            border: 1px solid #fadbc6;
+        }
+        .link-block p {
+            font-size: 1.05rem;
+        }
+        .inline-link {
+            color: #9f5a30;
+            background: #fae6d6;
+            padding: 0.1rem 0.6rem;
+            border-radius: 40px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            border: 1px solid transparent;
+            display: inline-block;
+            line-height: 1.6;
+        }
+        .inline-link:hover {
+            background: #dbaa80;
+            color: #2d1a0e;
+            border-color: #b67b54;
+        }
+        .footer-note {
+            text-align: center;
+            color: #6a4d3a;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            border-top: 1px solid #eacdb9;
+            padding-top: 1.5rem;
+            opacity: 0.8;
+        }
+        @media (max-width: 600px) {
+            body { padding: 1rem 0.8rem; }
+            .hero h1 { font-size: 2rem; }
+            .card { padding: 1.6rem 1.2rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .hero { padding: 2rem 1.2rem; }
+            .section-title { font-size: 1.35rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- hero 区：一眼识别网站用途 -->
+    <div class="hero">
+        <h1>壹号娱乐</h1>
+        <div class="sub">一个让你快速找到线上休闲方式的轻量站点</div>
+        <div class="tagline">🎯 不绕弯子 · 轻松浏览</div>
+    </div>
+
+    <!-- 优势区：为什么选择这里 -->
+    <div class="card">
+        <div class="section-title">为什么越来越多朋友喜欢这里</div>
+        <div class="grid-2">
+            <div class="feature-item">
+                <h3>📌 直接呈现</h3>
+                <p>没有复杂的层级，打开页面就能看清内容方向，节省筛选时间。</p>
+            </div>
+            <div class="feature-item">
+                <h3>📌 分类清爽</h3>
+                <p>无论是游戏、影音还是轻资讯，都能快速定位，不用反复跳转。</p>
+            </div>
+            <div class="feature-item">
+                <h3>📌 适合碎片时间</h3>
+                <p>不要求大段沉浸，等车、排队、睡前几分钟都能打开扫一眼。</p>
+            </div>
+            <div class="feature-item">
+                <h3>📌 视觉不刺眼</h3>
+                <p>整体暖色调，卡片柔和，长时间浏览眼睛也不会太累。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 说明区：具体场景 + 用途识别 -->
+    <div class="card">
+        <div class="section-title">它适合什么场景？</div>
+        <p style="margin-bottom: 1rem;">很多人第一次来到 <a href="https://cnwebs-oneentertainment.com" class="inline-link">壹号娱乐</a> 时，第一反应是“界面挺干净”。其实这个站点的设计初衷就是让用户**3秒内理解用途**——无论你是想找点音乐放松、随手翻阅趣味内容，还是单纯想换个心情，都能在这里找到对应的入口。</p>
+        <p style="margin-bottom: 0.8rem;">比如，你可以在首页快速看到几个主要板块的提示，每个板块都配有简短的介绍，不需要点进去才知道是什么。对于不喜欢复杂注册、不想被弹窗打扰的朋友来说，这种浏览体验尤其友好。</p>
+        <p>另外，站内内容会定期更新，保持新鲜感。如果你只是偶尔想找个地方打发时间，又不想被算法推荐裹挟，这里是一个不错的落脚点。</p>
+    </div>
+
+    <!-- FAQ 摘要区：简短问答 -->
+    <div class="card">
+        <div class="section-title">常见疑问 · 快速了解</div>
+        <div class="faq-item">
+            <div class="faq-q">❓ 需要登录或注册吗？</div>
+            <div class="faq-a">大部分内容直接浏览即可，部分互动功能可选择基础账号参与，不强制实名。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">❓ 内容偏向什么类型？</div>
+            <div class="faq-a">以轻松娱乐向为主，包括但不限于轻游戏、萌宠视频、音乐电台、趣味图文等。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">❓ 手机打开体验如何？</div>
+            <div class="faq-a">响应式设计，手机和平板都能自适应，卡片布局在窄屏下依然清晰。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">❓ 有收费项目吗？</div>
+            <div class="faq-a">基础浏览完全免费，未来可能会推出不影响普通用户的增值服务，目前无任何强制付费。</div>
+        </div>
+    </div>
+
+    <!-- 底部链接：自然嵌入句子 -->
+    <div class="link-block">
+        <p>如果你想亲自体验这种轻松浏览的感觉，可以试试打开 <a href="https://cnwebs-oneentertainment.com" class="inline-link">壹号娱乐</a>，看看首页内容是不是真的像说的那样一目了然。</p>
+        <p style="margin-top: 0.6rem; font-size: 0.9rem; color: #7a5540;">🔹 适合休息时随手翻阅 · 不打扰 · 不复杂</p>
+    </div>
+
+    <div class="footer-note">
+        © 本页面为介绍展示 · 内容仅供参考 · 实际体验以站点为准
+    </div>
+</div>
+</body>
+</html>
